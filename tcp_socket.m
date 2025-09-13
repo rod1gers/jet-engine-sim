@@ -12,7 +12,6 @@ function tcp_socket()
     server_socket = [];
   endif
 
-
   server_port = 5555;
   server_socket = socket(AF_INET, SOCK_STREAM, 0);
   setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, 1);
