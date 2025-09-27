@@ -1,0 +1,16 @@
+FROM gnuoctave/octave:latest
+
+RUN apt-get update && apt-get install -y \
+    octave-control \
+    octave-signal \
+    octave-communications \
+    octave-sockets \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /engine
+
+COPY . .
+
+EXPOSE 5555
+
+ENTRYPOINT ["octave", "--no-gui", "--persist", "main.m"]
