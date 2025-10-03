@@ -1,7 +1,7 @@
 
 function server_socket = tcp_socket()
   pkg load sockets
-  server_port = 5555;
+  server_port = 6000;
   
   % Close socket running from previous calls 
   persistent old_socket;

@@ -13,7 +13,7 @@
 # 4. Inlet Total Temperature (T0_in)             # Efficiency (could be looked up)           # Efficiency
                                                                                              # Compressor work required
                                                                                              # Torque demand
-function [P0_out, T0_out, m_dot, PowReq_comp ] = compressor(client_socket, m_dot, N, P0_in, T0_in, Cp, Ca1)
+function [P0_out, T0_out, m_dot, PowReq_comp ] = compressor(m_dot, N, P0_in, T0_in, Cp, Ca1)
   # Inlet
   r_tip_in = 0.2262;      #[m]
   r_root_in = 0.1131;     #[m]
@@ -26,9 +26,7 @@ function [P0_out, T0_out, m_dot, PowReq_comp ] = compressor(client_socket, m_dot
   
   [PowReq_comp_st1, T0_out, P0_out, isStable] = compressor_stage(m_dot, T0_in, P0_in, Cp, Ca1, N, r_mid);
   PowReq_comp = PowReq_comp_st1;
-  
-  send_msg_to_ecu(client_socket, "Aerodynamic Stability", isStable, "");
-  
+    
 end
 
 
